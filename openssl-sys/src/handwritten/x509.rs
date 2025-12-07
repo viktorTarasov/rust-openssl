@@ -376,6 +376,11 @@ const_ptr_api! {
 extern "C" {
     pub fn X509_REQ_get_attr_count(req: *const X509_REQ) -> c_int;
     pub fn X509_REQ_get_attr_by_NID(req: *const X509_REQ, nid: c_int, lastpos: c_int) -> c_int;
+    pub fn X509_REQ_get_attr_by_OBJ(
+        req: *const X509_REQ,
+        obj: *const ASN1_OBJECT,
+        lastpos: c_int,
+    ) -> c_int;
     pub fn X509_REQ_get_attr(req: *const X509_REQ, loc: c_int) -> *mut X509_ATTRIBUTE;
     pub fn X509_REQ_delete_attr(req: *mut X509_REQ, loc: c_int) -> *mut X509_ATTRIBUTE;
     pub fn X509_REQ_add1_attr_by_txt(
