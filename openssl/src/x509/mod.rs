@@ -1592,11 +1592,12 @@ impl X509ReqRef {
     #[corresponds(X509_REQ_get_attr_by_OBJ)]
     pub fn attribute_is_present(&self, obj: &Asn1Object) -> Result<i32, ErrorStack> {
         unsafe {
-            Ok(cvt(ffi::X509_REQ_get_attr_by_OBJ(
+            cvt(ffi::X509_REQ_get_attr_by_OBJ(
                 self.as_ptr(),
                 obj.as_ptr(),
                 0 as c_int,
-            ))?)
+            ))
+            .map(|ret| ret)
         }
     }
 }
