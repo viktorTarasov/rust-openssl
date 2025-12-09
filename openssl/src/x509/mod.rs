@@ -1597,7 +1597,6 @@ impl X509ReqRef {
                 obj.as_ptr(),
                 0 as c_int,
             ))
-            .map(|ret| ret)
         }
     }
 }
